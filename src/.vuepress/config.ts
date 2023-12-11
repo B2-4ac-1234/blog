@@ -3,6 +3,9 @@ import theme from "./theme.js";
 
 export default defineUserConfig({
   base: "/blog/",
+  lang: "zh-CN",
+  title: "B2-4AC的博客",
+  description: "B2-4AC的博客",
 
   locales: {
     "/": {
