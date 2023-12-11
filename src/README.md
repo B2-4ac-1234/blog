@@ -2,47 +2,47 @@
 home: true
 layout: BlogHome
 icon: home
-title: Blog Home
+title: 博客主页
 heroImage: /logo.svg
-heroText: The name of your blog
-tagline: You can put your slogan here
-heroFullScreen: true
+heroText: B2-4AC-1234的博客
+heroFullScreen: false
+tagline: 一个没有智能语音提示的博宝(误)
 projects:
-  - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
-
   - icon: link
-    name: link name
-    desc: link detailed description
-    link: https://link.address
+    name: 博客
+    desc: github博客项目
+    link: https://github.com/B2-4ac-1234/blog/tree/main
 
-  - icon: book
-    name: book name
-    desc: Detailed description of the book
-    link: https://link.to.your.book
+  # - icon: link
+  #   name: 链接名称
+  #   desc: 链接详细描述
+  #   link: https://链接地址
 
-  - icon: article
-    name: article name
-    desc: Detailed description of the article
-    link: https://link.to.your.article
+  # - icon: book
+  #   name: 书籍名称
+  #   desc: 书籍详细描述
+  #   link: https://你的书籍链接
 
-  - icon: friend
-    name: friend name
-    desc: Detailed description of friend
-    link: https://link.to.your.friend
+  # - icon: article
+  #   name: 文章名称
+  #   desc: 文章详细描述
+  #   link: https://你的文章链接
 
-  - icon: /logo.svg
-    name: custom item
-    desc: Detailed description of this custom item
-    link: https://link.to.your.friend
+  # - icon: friend
+  #   name: 伙伴名称
+  #   desc: 伙伴详细介绍
+  #   link: https://你的伙伴链接
 
-footer: customize your footer text
+  # - icon: /logo.svg
+  #   name: 自定义项目
+  #   desc: 自定义详细介绍
+  #   link: https://你的自定义链接
+
+footer: 当你凝视页脚的时候，页脚也在凝视你。
 ---
 
-This is a blog home page demo.
+<!-- 这是一个博客主页的案例。
 
-To use this layout, you should set both `layout: BlogHome` and `home: true` in the page front matter.
+要使用此布局，你应该在页面前端设置 `layout: BlogHome` 和 `home: true`。
 
-For related configuration docs, please see [blog homepage](https://theme-hope.vuejs.press/guide/blog/home/).
+相关配置文档请见 [博客主页](https://theme-hope.vuejs.press/zh/guide/blog/home/)。 -->
