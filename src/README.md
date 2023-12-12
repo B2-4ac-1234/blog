@@ -6,7 +6,7 @@ title: 博客主页
 heroImage: /logo.svg
 heroText: B2-4AC-1234的博客
 heroFullScreen: false
-tagline: 一个没有智能语音提示的博宝(误)
+tagline: 一款没有智能语音提示的博宝(误)
 projects:
   - icon: link
     name: 博客
