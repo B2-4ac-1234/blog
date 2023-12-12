@@ -9,8 +9,8 @@ export default hopeTheme({
   hostname: "https://B2-4AC-1234.github.io",
 
   author: {
-    name: "B2-4AC-1234",
-    url: "https://mister-hope.com",
+    name: "B2-4AC",
+    url: "https://github.com/B2-4ac-1234?tab=repositories",
   },
 
   iconAssets: "fontawesome-with-brands",
@@ -33,8 +33,8 @@ export default hopeTheme({
       // Evernote: "https://example.com",
       // Facebook: "https://example.com",
       // Flipboard: "https://example.com",
-      Gitee: "https://example.com",
-      GitHub: "https://example.com",
+      Gitee: "https://gitee.com/B2-4AC",
+      GitHub: "https://github.com/B2-4ac-1234?tab=repositories",
       // Gitlab: "https://example.com",
       // Gmail: "mailto:info@example.com",
       // Instagram: "https://example.com",
@@ -60,31 +60,6 @@ export default hopeTheme({
 
   locales: {
     "/": {
-      // navbar
-      navbar: zhNavbar,
-
-      // sidebar
-      sidebar: zhSidebar,
-
-      footer: "默认页脚",
-
-      displayFooter: true,
-
-      blog: {
-        description: "一个前端开发者",
-        intro: "/zh/intro.html",
-      },
-
-      // page meta
-      metaLocales: {
-        editLink: "在 GitHub 上编辑此页",
-      },
-    },
-
-    /**
-     * Chinese locale config
-     */
-    "/zh/": {
       // navbar
       navbar: zhNavbar,
 
