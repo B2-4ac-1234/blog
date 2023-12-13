@@ -115,20 +115,14 @@ export default hopeTheme({
 
       demo: true,
 
-      // install echarts before enabling it
-      // echarts: true,
-
+      // 启用 figure
       figure: true,
-
-      // install flowchart.ts before enabling it
-      // flowchart: true,
-
-      // gfm requires mathjax-full to provide tex support
-      // gfm: true,
-
+      // 启用图片懒加载
       imgLazyload: true,
+      // 启用图片标记
+      imgMark: true,
+      // 启用图片大小
       imgSize: true,
-      include: true,
 
       // install katex before enabling it
       // katex: true,

@@ -2,11 +2,11 @@
 icon: pen-to-square
 date: 2023-12-12
 category:
-  - vue
+  - Vue
 tag:
-  - vue
-  - vue i18n
-  - vue国际化
+  - Vue3
+  - Vue i18n
+  - Vue国际化
 ---
 
 # vue i18n 无法获取数组、对象
