@@ -3,7 +3,7 @@ home: true
 layout: BlogHome
 icon: home
 title: 博客主页
-heroImage: /logo.svg
+# heroImage: /logo.svg
 heroText: B2-4AC的博客
 heroFullScreen: false
 tagline: 一款没有智能语音提示的博宝(误)
