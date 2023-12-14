@@ -4,6 +4,18 @@ export const zhSidebar = sidebar({
   "/zh/": [
     "",
     {
+      text: "Web",
+      icon: "laptop-code",
+      prefix: "web/",
+      children: "structure",
+    },
+    {
+      text: "Vue",
+      icon: "laptop-code",
+      prefix: "web/vue/",
+      children: "structure",
+    },
+    {
       text: "如何使用",
       icon: "laptop-code",
       prefix: "demo/",
