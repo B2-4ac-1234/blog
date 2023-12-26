@@ -16,8 +16,6 @@ footer: 神说，要有光，世界就有了光；我写，看效果，项目就
 
 ![vue_title_hover_bug.gif](/blog/assets/images/vue/vue_title_hover_bug.gif)
 
-# Vue3 复用组件(组件使用 js 对象)路由跳转后失效的 bug
-
 ## 问题复现
 
 如图，点击“首页”之后，路由跳转，下划线动画失效

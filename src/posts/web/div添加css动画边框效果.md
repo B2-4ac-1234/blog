@@ -16,8 +16,6 @@ footer: 是特技，我加了特技！
 
 ![动画边框效果](/blog/assets/images/html_border_transition.gif)
 
-# div 添加 css 动画边框效果
-
 ## 效果演示
 
 ## 代码如下

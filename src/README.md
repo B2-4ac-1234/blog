@@ -1,7 +1,7 @@
 ---
 home: true
 layout: BlogHome
-icon: home
+icon: blogger
 title: 博客主页
 # heroImage: /logo.svg
 heroText: B2-4AC的博客

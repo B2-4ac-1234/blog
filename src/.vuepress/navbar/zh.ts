@@ -14,33 +14,43 @@ export const zhNavbar = navbar([
     children: [
       {
         text: "创建博客记录",
-        icon: "vuejs",
+        icon: "blogger",
         prefix: "web/",
-        link: "web/创建博客记录",
+        children: [
+          {
+            text: "创建博客记录",
+            icon: "blogger",
+            link: "创建博客记录",
+          },
+          {
+            text: "vue",
+            icon: "vuejs",
+            prefix: "vue/",
+            children: [
+              {
+                text: "Vue3复用组件(组件使用js对象)路由跳转后失效的bug",
+                icon: "js",
+                link: "Vue3复用组件(组件使用js对象)路由跳转后失效的bug",
+              },
+              {
+                text: "vue18n无法获取数组对象",
+                icon: "vuejs",
+                link: "vue18n无法获取数组对象",
+              },
+            ],
+          },
+          {
+            text: "div添加css动画边框效果",
+            icon: "css3",
+            link: "div添加css动画边框效果",
+          },
+        ],
       },
-      // {
-      //   text: "香蕉",
-      //   icon: "pen-to-square",
-      //   prefix: "banana/",
-      //   children: [
-      //     {
-      //       text: "香蕉 1",
-      //       icon: "pen-to-square",
-      //       link: "1",
-      //     },
-      //     {
-      //       text: "香蕉 2",
-      //       icon: "pen-to-square",
-      //       link: "2",
-      //     },
-      //     "3",
-      //     "4",
-      //   ],
-      // },
-      // { text: "樱桃", icon: "pen-to-square", link: "cherry" },
-      // { text: "火龙果", icon: "pen-to-square", link: "dragonfruit" },
-      // "tomato",
-      // "strawberry",
+      {
+        text: "docs",
+        prefix: "docs",
+        children: [],
+      },
     ],
   },
   {
