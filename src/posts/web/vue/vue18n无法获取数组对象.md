@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: vuejs
 date: 2023-12-12
 category:
   - Vue
@@ -7,6 +7,7 @@ tag:
   - Vue3
   - Vue i18n
   - Vue国际化
+footer: 想要国际化，先要说sao话。
 ---
 
 # vue i18n 无法获取数组、对象

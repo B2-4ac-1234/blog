@@ -1,24 +1,24 @@
 ---
-icon: pen-to-square
+icon: js
 date: 2023-12-13
 title: Vue3复用组件(组件使用js对象)路由跳转后失效的bug
 category:
-  - Web
+  - web
 tag:
-  - Vue3
-  - JavaScript
-  - Bug
-  - Fixed
+  - vue3
+  - javascript
+  - bug
+  - fixed
 star: false
 sticky: false
 footer: 神说，要有光，世界就有了光；我写，看效果，项目就有了bug。
 ---
 
+![vue_title_hover_bug.gif](/blog/assets/images/vue/vue_title_hover_bug.gif)
+
 # Vue3 复用组件(组件使用 js 对象)路由跳转后失效的 bug
 
 ## 问题复现
-
-<iframe height=55 width=569 :src="$withBase('/assets/images/vue/vue_title_hover_bug.gif')"></iframe>
 
 如图，点击“首页”之后，路由跳转，下划线动画失效
 
@@ -204,4 +204,4 @@ var indicate = function indicate(_element: HTMLElement, current: boolean) {
 
 ## 效果
 
-<iframe height=55 width=569 :src="$withBase('/assets/images/vue/vue_title_hover_bug_fix.gif')"></iframe>
+![vue_title_hover_bug_fix.gif](/blog/assets/images/vue/vue_title_hover_bug_fix.gif)
