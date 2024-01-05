@@ -23,7 +23,7 @@ export default hopeTheme({
 
   docsDir: "src",
 
-  breadcrumb: true,
+  breadcrumb: false,
 
   blog: {
     roundAvatar: true,
@@ -118,7 +118,7 @@ export default hopeTheme({
       // insert component easily
       // component: true,
 
-      demo: true,
+      demo: false,
 
       // 启用 figure
       figure: true,
