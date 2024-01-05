@@ -18,11 +18,17 @@ export const zhSidebar = sidebar({
           icon: "blogger",
           prefix: "web/",
           collapsible: true,
+          link: "web/",
           children: [
             {
               text: "div添加css动画边框效果",
               icon: "css3",
               link: "div添加css动画边框效果",
+            },
+            {
+              text: "web归纳",
+              icon: "html5",
+              link: "web归纳",
             },
             {
               text: "vue",

@@ -23,6 +23,11 @@ export const zhNavbar = navbar([
             link: "创建博客记录",
           },
           {
+            text: "web归纳",
+            icon: "html5",
+            link: "web归纳",
+          },
+          {
             text: "vue",
             icon: "vuejs",
             prefix: "vue/",
