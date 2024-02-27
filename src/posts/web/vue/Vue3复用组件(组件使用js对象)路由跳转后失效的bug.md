@@ -14,7 +14,8 @@ sticky: false
 footer: 神说，要有光，世界就有了光；我写，看效果，项目就有了bug。
 ---
 
-![vue_title_hover_bug.gif](/blog/assets/images/vue/vue_title_hover_bug.gif)
+<!-- ![vue_title_hover_bug.gif](/blog/assets/images/vue/vue_title_hover_bug.gif) -->
+<iframe height=55 width=569 :src="$withBase('/assets/images/vue/vue_title_hover_bug.gif')"></iframe>
 
 ## 问题复现
 

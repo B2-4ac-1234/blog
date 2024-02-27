@@ -24,7 +24,8 @@ footer: 我虽无意归纳,却知查询苦楚
 
 ### 效果
 
-![美化后滚动条](/blog/assets/images/html_scrollbar.gif)
+<!-- ![美化后滚动条](/blog/assets/images/html_scrollbar.gif) -->
+<iframe height=55 width=569 :src="$withBase('/assets/images/html_scrollbar.gif')"></iframe>
 
 ### 代码
 

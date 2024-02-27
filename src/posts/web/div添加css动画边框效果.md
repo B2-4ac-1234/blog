@@ -14,8 +14,8 @@ sticky: false
 footer: 是特技，我加了特技！
 ---
 
-![动画边框效果](/blog/assets/images/html_border_transition.gif)
-
+<!-- ![动画边框效果](/blog/assets/images/html_border_transition.gif) -->
+<iframe height=55 width=569 :src="$withBase('/assets/images/html_border_transition.gif')"></iframe>
 ## 效果演示
 
 ## 代码如下
