@@ -8,6 +8,7 @@ tag:
   - vue3
   - html
   - css
+  - js/ts
 star: true
 sticky: false
 footer: 我虽无意归纳,却知查询苦楚
@@ -71,4 +72,21 @@ footer: 我虽无意归纳,却知查询苦楚
   /*定义右下角拖动块的样式（位置7）*/
   background: #ff0bee;
 }
+```
+
+## ts 复制内容到剪切板
+
+```ts
+export default {
+  /** 复制到剪切板 */
+  copyToClipboard: (text: string) => {
+    navigator.clipboard.writeText(text).catch((e) => console.log(e));
+  },
+};
+```
+
+## 打包出现 RangeError: Maximum call stack size exceeded 问题
+
+```vue
+1、死循环 2、范型与属性同名产生冲突
 ```
