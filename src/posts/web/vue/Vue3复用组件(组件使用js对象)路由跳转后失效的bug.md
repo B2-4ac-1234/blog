@@ -14,8 +14,7 @@ sticky: false
 footer: 神说，要有光，世界就有了光；我写，看效果，项目就有了bug。
 ---
 
-<!-- ![vue_title_hover_bug.gif](/blog/assets/images/vue/vue_title_hover_bug.gif) -->
-<iframe height=55 width=569 :src="$withBase('/assets/images/vue/vue_title_hover_bug.gif')"></iframe>
+![vue_title_hover_bug.gif](https://github.com/B2-4ac-1234/blog/blob/main/src/.vuepress/public/assets/images/vue/vue_title_hover_bug.gif?raw=true)
 
 ## 问题复现
 
@@ -203,4 +202,4 @@ var indicate = function indicate(_element: HTMLElement, current: boolean) {
 
 ## 效果
 
-![vue_title_hover_bug_fix.gif](/blog/assets/images/vue/vue_title_hover_bug_fix.gif)
+![vue_title_hover_bug_fix.gif](https://github.com/B2-4ac-1234/blog/blob/main/src/.vuepress/public/assets/images/vue/vue_title_hover_bug_fix.gif?raw=true)

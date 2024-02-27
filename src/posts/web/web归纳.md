@@ -11,7 +11,7 @@ tag:
   - js/ts
 star: true
 sticky: false
-footer: 我虽无意归纳,却知查询苦楚
+footer: 我虽无意归纳,却知填坑苦楚
 ---
 
 ## a 标签点击调用邮箱
@@ -25,7 +25,8 @@ footer: 我虽无意归纳,却知查询苦楚
 ### 效果
 
 <!-- ![美化后滚动条](/blog/assets/images/html_scrollbar.gif) -->
-<iframe height=55 width=569 :src="$withBase('/assets/images/html_scrollbar.gif')"></iframe>
+
+![美化后滚动条](https://github.com/B2-4ac-1234/blog/blob/main/src/.vuepress/public/assets/images/html_scrollbar.gif?raw=true)
 
 ### 代码
 

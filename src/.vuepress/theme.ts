@@ -118,7 +118,7 @@ export default hopeTheme({
       // insert component easily
       // component: true,
 
-      demo: false,
+      demo: true,
 
       // 启用 figure
       figure: true,
