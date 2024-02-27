@@ -1,6 +1,6 @@
 ---
 icon: html5
-date: 2024-01-5
+date: 2024-01-05
 title: web归纳
 category:
   - web
