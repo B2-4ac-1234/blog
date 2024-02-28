@@ -101,9 +101,8 @@ export default hopeTheme({
     // WARNING: This is a test server for demo only.
     // You should create and use your own comment service in production.
     comment: {
-      provider: "Waline",
-      serverURL: "https://blog-comment-pearl.vercel.app/",
-      login: "disable",
+      provider: "Twikoo",
+      envId: "https://b2-4ac-twolpp.hf.space",
     },
 
     // all features are enabled for demo, only preserve features you need here
