@@ -33,6 +33,11 @@ export const zhNavbar = navbar([
             prefix: "vue/",
             children: [
               {
+                text: "图标放大组件",
+                icon: "vuejs",
+                link: "图标放大组件",
+              },
+              {
                 text: "Vue3复用组件(组件使用js对象)路由跳转后失效的bug",
                 icon: "js",
                 link: "Vue3复用组件(组件使用js对象)路由跳转后失效的bug",
@@ -42,6 +47,11 @@ export const zhNavbar = navbar([
                 icon: "vuejs",
                 link: "vue18n无法获取数组对象",
               },
+              {
+                text: "vue项目axios封装及使用",
+                icon: "js",
+                link: "vue项目axios封装及使用",
+              },
             ],
           },
           {
@@ -50,11 +60,6 @@ export const zhNavbar = navbar([
             link: "div添加css动画边框效果",
           },
         ],
-      },
-      {
-        text: "docs",
-        prefix: "docs",
-        children: [],
       },
     ],
   },

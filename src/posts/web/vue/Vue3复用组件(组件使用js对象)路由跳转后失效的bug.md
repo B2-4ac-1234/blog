@@ -1,5 +1,5 @@
 ---
-icon: js
+icon: vuejs
 date: 2023-12-13
 title: Vue3复用组件(组件使用js对象)路由跳转后失效的bug
 category:
