@@ -104,6 +104,7 @@ export default hopeTheme({
       provider: "Waline",
       serverURL:
         "https://blog-comment-fmnzwatk0-b2-4ac-1234s-projects.vercel.app/",
+      login: "disable",
     },
 
     // all features are enabled for demo, only preserve features you need here
