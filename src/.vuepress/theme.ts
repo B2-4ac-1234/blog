@@ -102,8 +102,7 @@ export default hopeTheme({
     // You should create and use your own comment service in production.
     comment: {
       provider: "Waline",
-      serverURL:
-        "https://blog-comment-fmnzwatk0-b2-4ac-1234s-projects.vercel.app/",
+      serverURL: "https://blog-comment-pearl.vercel.app/",
       login: "disable",
     },
 
