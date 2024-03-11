@@ -23,7 +23,7 @@ import.meta.glob("@/assets/images/*.*", { eager: true, as: "url" }); //导入的
 
 [解决方法(问题来源)](https://cn.vitejs.dev/config/build-options.html#build-assetsinlinelimit)
 
-官方配置的小雨 4kb 的图片,导入时会默认内联将图片解析为 base64 编码,造成批量导入的部分图标不显示。
+官方配置的小于 4kb 的图片,导入时会默认内联将图片解析为 base64 编码,造成批量导入的部分图标不显示。
 
 ```ts
 export default defineConfig({
