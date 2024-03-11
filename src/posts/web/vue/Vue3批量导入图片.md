@@ -25,3 +25,16 @@ const inconList = Object.values(
 console.log(`output->inconList`, inconList);
 </script>
 ```
+
+或导入为 url 模式
+
+```vue
+<script setup lang="ts">
+const iconList: string[] = Object.values(
+  import.meta.glob("@/assets/images/home/ic_home**.{png,jpg}", {
+    eager: true,
+    as: "url",
+  })
+).map((v: any) => v);
+</script>
+```
