@@ -1,11 +1,10 @@
 ---
 icon: vuejs
 date: 2024-03-11
-title: vue3(批量)导入图片url变base64导致图标失效的bug
+title: vite(批量)导入图片url变base64导致图标失效的bug
 category:
   - web
 tag:
-  - vue3
   - typescript
   - vite
 star: false
