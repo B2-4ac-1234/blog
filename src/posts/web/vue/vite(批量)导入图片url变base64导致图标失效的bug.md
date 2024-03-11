@@ -14,6 +14,8 @@ footer: 小配置,大问题,官方挖坑我来踩👎
 
 ![效果图](https://github.com/B2-4ac-1234/blog/blob/main/src/.vuepress/public/assets/images/vue/vue_import_img_base64_bug.png?raw=true)
 
+![控制台输出路径](https://github.com/B2-4ac-1234/blog/blob/main/src/.vuepress/public/assets/images/vue/vue_import_img_no_show.png?raw=true)
+
 ```vue
 <script setup lang="ts">
 import.meta.glob("@/assets/images/*.*", { eager: true, as: "url" }); //导入的图标部分显示,部分不显示
