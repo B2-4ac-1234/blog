@@ -26,6 +26,7 @@ footer: 方向决定难度,角度决定步数。
     "@types/node": "^20.11.30",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
+    "log4js": "^6.9.1",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "typescript": "^5.4.3"
@@ -43,17 +44,43 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 import * as path from "path";
 import axios from "axios";
+import log4js from "log4js";
+log4js.configure({
+  appenders: {
+    console: { type: "stdout" },
+    file: {
+      type: "dateFile",
+      filename: "./logs/server.log",
+      pattern: "-yyyyMMdd.log",
+      alwaysIncludePattern: false,
+    },
+  },
+  categories: {
+    default: { appenders: ["console", "file"], level: "debug" },
+  },
+});
+
+const logger = log4js.getLogger("main_server");
 
 main();
 
 async function main() {
-  var cookie = null; //配置cookie后获取的为推荐的热门列表
-  var list: any[] = await getBillBillPopularList(1, false, 10, cookie);
+  const cookie = null; //配置cookie后获取的为推荐的热门列表
+  const list: any[] = await getBillBillPopularList(1, false, 10, cookie);
   list.forEach((v, i) => {
-    console.log(`top${i + 1}`);
-    console.log(`title:${v.title}`);
-    console.log(`auth:${v.owner.name}\n`);
+    logger.info(`top${i + 1}`);
+    logger.info(`title:${v.title}`);
+    logger.info(`auth:${v.owner.name}\n`);
   });
+  var map: Map<string, string> = new Map();
+  list.forEach((v, i) => {
+    logger.info(`top${i + 1} / ${list.length}`);
+    let url = v.pic;
+    let title = (v.title as string).trim();
+    map.set(url, title);
+  });
+  await downloadImageByMap(map);
+  logger.info("end");
 }
 /**
  * 获取b站热门列表
@@ -70,7 +97,7 @@ async function getBillBillPopularList(
   cookie: string | null = null
 ): Promise<any[]> {
   var base_url = "https://api.bilibili.com/x/web-interface/popular?pn=" + page;
-  console.log(base_url);
+  logger.info(base_url);
   const data = await axios
     .get(base_url, {
       headers: {
@@ -128,11 +155,10 @@ async function getBillBillImage(bid: string) {
   pic_list.forEach(async (value: any, index) => {
     urls.push(value.pic);
   });
-  console.log("begin");
-  console.log(downloadImage(urls));
+  logger.info(downloadImage(urls));
 }
 /**
- * 下载图片,保存到文件夹,记得自己建个文件夹
+ * 下载图片,保存到文件夹
  * @param urls
  * @returns
  */
@@ -149,9 +175,39 @@ async function downloadImage(urls: string[]): Promise<string> {
         path.join(__dirname, "./download_img/") + new Date().getTime() + ".jpg"
       );
       ws.write(buffer);
-      console.log(`write ${index}`);
+      logger.info(`write ${index}`);
     }, 200);
   });
   return "finish";
+}
+
+/**
+ * 下载图片,保存到文件夹(如果文件夹不存在则创建,如果已存在同名文件不重复下载)
+ * @param map
+ * @returns
+ */
+async function downloadImageByMap(map: Map<string, string>): Promise<void> {
+  fs.mkdir(path.join(__dirname, "./download_img/"), () => {});
+  const total = map.size;
+  var index = 1;
+  await map.forEach(async (title, url) => {
+    let filePath = path.join(__dirname, "./download_img/") + title + ".jpg";
+    if (!fs.existsSync(filePath)) {
+      setTimeout(async () => {
+        const buffer = await axios
+          .get(url, { responseType: "arraybuffer" })
+          .then((res) => res.data)
+          .catch((e) => {
+            return e;
+          });
+        const ws = fs.createWriteStream(filePath);
+        ws.write(buffer);
+        logger.info(`write ${title} success`);
+        logger.info(`${index}/${total}`);
+        index++;
+      }, 200);
+    }
+  });
+  logger.info("finish write");
 }
 ```
