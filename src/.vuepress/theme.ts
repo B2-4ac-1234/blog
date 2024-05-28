@@ -168,7 +168,7 @@ export default hopeTheme({
       vPre: true,
 
       // install @vue/repl before enabling it
-      // vuePlayground: true,
+      vuePlayground: true,
     },
 
     // uncomment these if you want a PWA
