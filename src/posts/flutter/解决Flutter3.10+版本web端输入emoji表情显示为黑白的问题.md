@@ -1,7 +1,7 @@
 ---
 icon: js
 date: 2024-06-17
-title: 解决Flutter3.10+版本输入emoji表情显示为黑白的问题
+title: 解决Flutter3.10+版本web端输入emoji表情显示为黑白的问题
 category:
   - Flutter
   - bug
