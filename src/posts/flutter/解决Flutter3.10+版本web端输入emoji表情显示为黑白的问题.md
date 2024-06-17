@@ -13,7 +13,14 @@ tag:
 footer: flutter官方只需要升级版本就好了，但是开发人员要修改的bug(代码)就多了。
 ---
 
-#### index.html
+问题可能在项目 flutter 项目升级 flutter 到 3.1 版本之后出现
+
+原因在[github](https://github.com/flutter/engine/pull/40990)中有提到
+Some apps don't want to use color emojis due to its size (~24MB). This PR makes color emojis opt-in.
+
+就是说为了减少体积，就把彩色 emoji 弄成黑白了。
+
+#### \<project-dir\>/web/index.html
 
 ```html
 <!DOCTYPE html>
@@ -142,7 +149,7 @@ _flutter.loader.load({
 
 两者结合之后
 
-#### index.html
+#### \<project-dir\>/web/index.html
 
 把原先 index.html 中的<script></script>替换，替换如下
 
