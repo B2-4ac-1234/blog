@@ -20,61 +20,13 @@ footer: flutter官方只需要升级版本就好了，但是开发人员要修�
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-    <base href="$FLUTTER_BASE_HREF" />
-
-    <meta charset="UTF-8" />
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-    <meta name="description" content="A new Flutter project." />
-
-    <!-- iOS meta tags & icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="anywhere" />
-    <link rel="apple-touch-icon" href="images/favicon.png" />
-
-    <title>Handcent Anywhere</title>
-
-    <link rel="manifest" href="manifest.json" />
-
-    <style type="text/css">
-      #loader {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-
-      #loader h1 {
-        color: black;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 32px;
-        line-height: normal;
-      }
-    </style>
-  </head>
+  <head> </head>
   <body>
     <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
     <div id="loader">
-      <h1>
-        <img src="images/loading.gif" />
-      </h1>
+      <h1>loading</h1>
     </div>
 
     <script>
@@ -139,30 +91,6 @@ footer: flutter官方只需要升级版本就好了，但是开发人员要修�
       } else {
         // Service workers not supported. Just drop the <script> tag.
         loadMainDartJs();
-      }
-    </script>
-    <script>
-      // 外部通知
-      function externalNotification(title, content) {
-        if (window.Notification && Notification.permission !== "denied") {
-          Notification.requestPermission(function (status) {
-            var n = new Notification(title, { body: content });
-          });
-        }
-      }
-      // 获取外部通知权限
-      async function requestExternalPermission() {
-        return JSON.stringify(
-          await Notification.requestPermission().then(function (result) {
-            if (result === "denied") {
-              return false;
-            }
-            if (result === "default") {
-              return false;
-            }
-            return true;
-          })
-        );
       }
     </script>
   </body>
