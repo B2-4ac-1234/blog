@@ -108,6 +108,15 @@ useColorEmoji: true 但是不知道哪里写
 
 ![参考自问答](https://stackoverflow.com/questions/77753891/emojis-arent-dispalying-in-flutter-web-they-are-black-and-white)
 
+```js
+onEntrypointLoaded: function(engineInitializer) {
+  engineInitializer.initializeEngine().then(function(appRunner) {
+    useColorEmoji: true,
+    appRunner.runApp();
+  });
+}
+```
+
 以及
 
 ![官方文档](https://docs.flutter.dev/platform-integration/web/bootstrapping)
