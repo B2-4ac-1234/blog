@@ -111,7 +111,7 @@ Some apps don't want to use color emojis due to its size (~24MB). This PR makes 
 关键在于
 useColorEmoji: true 但是不知道哪里写
 
-![参考自问答](https://stackoverflow.com/questions/77753891/emojis-arent-dispalying-in-flutter-web-they-are-black-and-white)
+[参考自问答](https://stackoverflow.com/questions/77753891/emojis-arent-dispalying-in-flutter-web-they-are-black-and-white)
 
 ```js
 onEntrypointLoaded: function(engineInitializer) {
@@ -124,7 +124,7 @@ onEntrypointLoaded: function(engineInitializer) {
 
 以及
 
-![官方文档](https://docs.flutter.dev/platform-integration/web/bootstrapping)
+[官方文档](https://docs.flutter.dev/platform-integration/web/bootstrapping)
 
 Example: Display a progress indicator
 To give the user of your application feedback during the initialization process, use the hooks provided for each stage to update the DOM:
