@@ -13,8 +13,6 @@ tag:
 footer: flutter官方只需要升级版本就好了，但是开发人员要修改的bug(代码)就多了。
 ---
 
-### 1.flutter 项目
-
 #### index.html
 
 ```html
@@ -145,6 +143,8 @@ _flutter.loader.load({
 两者结合之后
 
 #### index.html
+
+把原先 index.html 中的<script></script>替换，替换如下
 
 ```js
 <script>
