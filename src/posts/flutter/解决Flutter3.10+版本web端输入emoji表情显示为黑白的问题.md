@@ -151,9 +151,9 @@ _flutter.loader.load({
 
 #### \<project-dir\>/web/index.html
 
-把原先 index.html 中的<script></script>替换，替换如下
+把原先 index.html 中的 script 替换，替换如下
 
-```js
+```
 <script>
   {{flutter_js}}
   {{flutter_build_config}}
