@@ -92,3 +92,13 @@ export default {
 ```vue
 1、死循环 2、范型与属性同名产生冲突
 ```
+
+## 遍历对象属性
+
+```ts
+let obj = new Object();
+let objs: [] = Object.keys(obj);
+objs.forEach((item) => {
+  console.log(item);
+});
+```
