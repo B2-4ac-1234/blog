@@ -76,7 +76,8 @@ export default hopeTheme({
       displayFooter: false,
 
       blog: {
-        description: "一个前端开发者",
+        description:
+          "本人熟练掌握html,javascript,typescript,css,dart,java,sql等单词拼写",
         intro: "/zh/intro.html",
       },
 
