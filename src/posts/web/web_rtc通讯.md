@@ -14,7 +14,7 @@ sticky: false
 footer: WebRTC搞直播——全是"点对点"（双关：既指技术，又指主播和观众互相吐槽，令人忍俊不禁）
 ---
 
-## ![web_rtc示例](https://b2-4ac-1234.github.io/project/web_rtc.html)
+## [web_rtc示例](https://b2-4ac-1234.github.io/project/web_rtc.html)
 
 ### 注意事项
 
