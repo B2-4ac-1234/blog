@@ -102,8 +102,11 @@ export default hopeTheme({
     // WARNING: This is a test server for demo only.
     // You should create and use your own comment service in production.
     comment: {
-      provider: "Twikoo",
-      envId: "https://b2-4ac-twolpp.hf.space",
+      provider: "Giscus",
+      repo: "B2-4ac-1234/blog",
+      repoId: "R_kgDOK4Q0Gg",
+      category: "General",
+      categoryId: "DIC_kwDOK4Q0Gs4Co2Kr",
     },
 
     // all features are enabled for demo, only preserve features you need here
