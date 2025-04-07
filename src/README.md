@@ -10,8 +10,13 @@ tagline: 一款没有智能语音提示的博宝(误)
 projects:
   - icon: link
     name: 博客
-    desc: github博客项目
+    desc: github博客
     link: https://github.com/B2-4ac-1234/blog/tree/main
+    
+  - icon: link
+    name: 项目
+    desc: 代码样例项目
+    link: https://b2-4ac-1234.github.io/project/#/
 
   # - icon: link
   #   name: 链接名称
@@ -40,9 +45,3 @@ projects:
 
 footer: 当你凝视页脚的时候，页脚也在凝视你。
 ---
-
-<!-- 这是一个博客主页的案例。
-
-要使用此布局，你应该在页面前端设置 `layout: BlogHome` 和 `home: true`。
-
-相关配置文档请见 [博客主页](https://theme-hope.vuejs.press/zh/guide/blog/home/)。 -->
