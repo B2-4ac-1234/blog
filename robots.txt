@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://B2-4AC-1234.github.io/blog/sitemap.xml
