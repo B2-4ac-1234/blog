@@ -1,9 +1,9 @@
 ---
 date: 2025-03-18
 title: Flutter写法&优化记录
-description: 记录flutter开发中遇到的问题和优化
+description: 记录flutter开发中遇到的写法和优化问题
 category:
-  - Flutter
+  Flutter
 tag:
   - Flutter
 footer: Flutter的性能优化就像减肥，你以为少吃点（减少Widget重建）就能瘦，结果发现还得去健身房（优化布局）。
@@ -13,28 +13,30 @@ footer: Flutter的性能优化就像减肥，你以为少吃点（减少Widget�
 
 ### 1.1 减少 Widget 重建
 
-#### 1.1.1 减少不必要的重建
+能加const就加const。用**ValueNotifier,ValueListenableBuilder** 代替 **SetState()**能大幅减低重新渲染区域，从而大幅降低界面重绘。
 
-在 Flutter 中，Widget 是不可变的，一旦创建就不能更改。因此，每次更改 Widget 的属性时，都会导致整个 Widget 树重新构建。为了避免不必要的重建，可以使用以下方法：
+### 1.2 减少不必要的重建
 
-- 能用 const 尽量用：如果您的 Widget 是不可变的，可以使用 const 关键字将其标记为常量。这样，Flutter 就可以在编译时进行优化，避免不必要的重建。
+在 Flutter 中，Widget 是不可变的，一旦创建就不能更改。因此，每次更改 Widget 的属性时，都会导致整个 Widget 树重新构建。为了避免不必要地重建，可以使用以下方法：
+
+- 能用 const 尽量用：如果您的 Widget 是不可变的，可以使用 const 关键字将其标记为常量。这样，Flutter 就可以在编译时进行优化，避免不必要地重建。
 - 使用 Key：如果您的 Widget 是可变的，可以使用 Key 来标记它。Key 是一个唯一标识符，可以用于告诉 Flutter 哪些 Widget 需要更新。
 - 使用 StatefulWidget：如果您的 Widget 是可变的，可以使用 StatefulWidget 来标记它。StatefulWidget 允许您在 Widget 的状态发生变化时更新它。
 - 在只需要变更较少内容尤其文本一类时，使用 ValueNotifier 和 valueListenable 代替 setState() 可大幅减少 StatefulWidget 界面重绘
 
-#### 1.1.2 减少不必要的布局
+### 1.3 减少不必要的布局
 
 在 Flutter 中，布局是一个非常昂贵的操作，因为它需要重新计算每个 Widget 的位置和大小。为了避免不必要的布局，可以使用以下方法：
 
 - 使用 ListView.builder：ListView.builder 只会在需要时创建和更新列表项，而不是一次性创建所有列表项。
 - 使用 Sliver：如果您的列表项是可变的，可以使用 Sliver 来创建它。Sliver 是一个可滚动的 Widget，它只在需要时创建和更新列表项。
 
-### 1.2 使用 injectable 和 get_it 优化项目结构的框架
+## 2 使用 injectable 和 get_it 优化项目结构的框架
 
 - ~~使用 Provider：如果您的 Widget 是可变的，可以使用 Provider 来管理它的状态。Provider 是一个状态管理库，可以帮助您在 Widget 之间共享状态。~~
 - 使用 injectable 和 get_it 管理状态：如果您的 Widget 是可变的，可以使用 injectable 和 get_it 来管理它的状态。injectable 和 get_it 是两个状态管理库，可以帮助您在 Widget 之间共享状态。
 
-#### 1.2.1 injectable 和 get_it 框架搭建
+### 2.1 injectable 和 get_it 框架搭建
 
 安装依赖
 
@@ -112,7 +114,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 如果使用 Android studio 可以配置运行设置(Edit Configurations...)，添加运行配置 Shell Script，Execute 选择 Script，text,将生成代码粘贴进去，点击 OK。后续添加服务对象时，只需要在服务对象文件上添加@singleton/@injectable 注解，然后运行 Shell Script 生成代码即可(避免每次命令行输入)。
 
-#### 1.2.2 injectable 和 get_it 框架使用
+### 2.2 injectable 和 get_it 框架使用
 
 参考 lib/main.dart
 
@@ -212,9 +214,9 @@ class _MyHomePageState extends State<MyHomePage> {
 总之导入 injection.dart，使用 getIt.get<服务对象>()获取服务对象即可。
 例子是用@singleton 生成单例，同时使用 valueListenableBuilder 监听值变化，更新界面。代替了 setState()。如果不用 valueListenableBuilder，使用 setState()也可以更新界面。
 
-#### 1.2.3 injectable 和 get_it 的优点,依赖注入的用法请[参考](https://pub.dev/packages/injectable#setup)
+### 2.3 injectable 和 get_it 的优点,依赖注入的用法请[参考](https://pub.dev/packages/injectable#setup)
 
-##### 1.2.3.1 @singleton 注解就省去了 dart 的单例的实现。
+#### 2.3.1 @singleton 注解就省去了 dart 的单例的实现。
 
 ```dart
 class FutureBaseService {
@@ -227,7 +229,7 @@ class FutureBaseService {
 }
 ```
 
-##### 1.2.3.2 @Named("impl1") 抽象类绑定到实现, 可以直接使用抽象类，切换实现类非常方便
+#### 2.3.2 @Named("impl1") 抽象类绑定到实现, 可以直接使用抽象类，切换实现类非常方便
 
 Binding an abstract class to multiple implementations
 将抽象类绑定到多个实现
@@ -291,122 +293,168 @@ spring boot 可以通过@requestMapping("/test")注解来区分接收不同请�
 如果像通过配置文件或者运行参数来区分环境/代码，需要在代码逻辑上判断(类似 if(String.fromEnvironment("FLUTTER_ENV",defaultValue: "dev")) === "test")。
 @dev 和@test 不能实现，只能在代码逻辑上判断！！！
 
-## 2 问题记录
+## 3 用flutter_bloc代替provider(超过demo级别就建议使用)
 
-### 2.1 代码相关
-
-#### 2.1.1 const String.fromEnvironment("FLUTTER_ENV",defaultValue: "dev") 和 String.fromEnvironment("FLUTTER_ENV",defaultValue: "dev") 为什么结果不一样
-
-##### 2.1.1.1 const String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev")
-
-const 关键字的作用：
-
-const 表示编译时常量。在编译时，Dart 会尝试解析 String.fromEnvironment 的值。
-
-如果 FLUTTER_ENV 环境变量在编译时未定义，Dart 会直接使用 defaultValue（即 "dev"），并且这个值会被硬编码到编译后的代码中。
-
-行为：
-
-如果 FLUTTER_ENV 在编译时未定义，const String.fromEnvironment 会直接返回 "dev"。
-
-如果 FLUTTER_ENV 在编译时定义了（例如通过 --dart-define 传递），Dart 会使用定义的值。
-
-注意：const 版本的环境变量只能在编译时解析，无法在运行时动态更改。
-
-示例：
-
-```dart
-const env = String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev");
-print(env); // 如果 FLUTTER_ENV 未定义，输出 "dev"
-```
-
-##### 2.1.1.2 String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev")
-
-没有 const 关键字：
-
-这是一个非常量调用，String.fromEnvironment 会在运行时解析环境变量。
-
-如果 FLUTTER_ENV 环境变量在运行时未定义，Dart 会使用 defaultValue（即 "dev"）。
-
-行为：
-
-如果 FLUTTER_ENV 在运行时未定义，String.fromEnvironment 会返回 "dev"。
-
-如果 FLUTTER_ENV 在运行时定义了（例如通过系统环境变量或运行时配置），Dart 会使用定义的值。
-
-注意：非 const 版本的环境变量可以在运行时动态解析。
-
-示例：
-
-```dart
-final env = String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev");
-print(env); // 如果 FLUTTER_ENV 未定义，输出 "dev"
-```
-
-##### 2.1.1.3 实际应用
-
-使用 const String.fromEnvironment
-适合在编译时确定的环境变量，例如区分开发环境和生产环境：
-
-```dart
-const env = String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev");
-print(env); // 编译时确定，输出 "dev" 或定义的值
-```
-
-使用 String.fromEnvironment
-适合在运行时动态解析的环境变量，例如从系统环境变量中读取：
-
-```dart
-final env = String.fromEnvironment("FLUTTER_ENV", defaultValue: "dev");
-print(env); // 运行时解析，输出 "dev" 或系统环境变量的值
-```
-
-在运行时，可以通过设置系统环境变量来影响结果：
-
+### 3.1 安装和说明[参考](https://pub.dev/packages/flutter_bloc)
 ```shell
-export FLUTTER_ENV=test
-flutter run
+flutter pub add flutter_bloc
 ```
 
-#### 2.1.2 封装一个参数中带有函数的容器
+### 3.2 用法
+分为三部分,bloc对象,state状态和event事件。
+bloc 对象管理state状态,state只能通过event事件来改变state状态。
+界面通过BlocBuilder来监听state状态的变化，更新界面，通过添加event事件来更新state状态。
+逻辑上可看作 界面=>event=>bloc=>state=>BlocBuilder=>界面...
+即使是event修改的状态和原状态相同，界面监听的state状态也会变化，所以界面也会更新。(这点很好理解，准确是提交状态和监听状态，不是只监听状态变化)
+由于界面上通过BlocBuilder来监听state状态的变化，所以逻辑上局部有多种状态的尤其适合，例如在线状态(在线，忙碌，离开，离线...)。
+逻辑上界面就和状态分开了，界面只需要监听状态变化，不需要关心状态的变化逻辑。
+bloc就不关心界面了，只关心状态的变化逻辑。
 
+#### 1.3.3 例子
+以下代码是一个简单的例子，展示了如何使用flutter_bloc来管理用户设置(包含用户名、主题颜色和亮度模式)。
+##### 1.3.3.1 user_setting_bloc.dart
 ```dart
-Widget _buildSliderButton(
-    String label,
-    double value,
-    Function(double) onChanged,//关键这里
-  ) {
-    return Column(
-      children: [
-        Text(
-          label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: 11.sp,
-              ),
-        ),
-        Slider(
-          value: value,
-          activeColor: Theme.of(context).colorScheme.primary,
-          onChanged: (val) {
-            onChanged(val);
-            _update();
-          },
-        ),
-      ],
-    );
-  }
-```
+part 'user_setting_event.dart';
+part 'user_setting_state.dart';
 
-使用时
+@singleton
+class UserSetting extends Bloc<UserSettingEvent, UserSettingState> {
+  String _username = "";
+  HcTheme _themeData = HcTheme.defaultLightList().first;
 
-```dart
-_buildSliderButton(
-  Strings.blusher.i18n,
-  _beautyFilters.blusherValue,
-  (value) {
-    setState(() {
-      _beautyFilters.blusherValue = value;
+  bool _brightness = false;
+
+  UserSetting() : super(UserSettingStateInit()) {
+    on<UserSettingEvent>((event, emit) async {
+      if (event is UserNameChange) {
+        emit(UserSettingStateName(_username));
+      }
+      if (event is UserThemeChange) {
+        emit(UserSettingStateTheme(_themeData.themeData));
+      }
+      if (event is UserBrightnessChange) {
+        emit(UserSettingStateBrightness(_brightness));
+      }
     });
-  },
-)
+  }
+
+  void setUsername(String username) {
+    LogUtil().d("setUsername:$username");
+    _username = username;
+    add(UserNameChange(_username));
+  }
+
+  String getUsername() {
+    return _username;
+  }
+
+  void setHcTheme(HcTheme hcTheme) {
+    LogUtil().d("will set HcTheme:$hcTheme");
+    _themeData = hcTheme;
+  }
+
+  HcTheme getHcTheme() {
+    return _themeData;
+  }
+
+  void setBrightness(bool mode) {
+    _brightness = mode;
+    add(UserBrightnessChange(mode));
+  }
+
+  bool getBrightness() {
+    return _brightness;
+  }
+}
+```
+##### 1.3.3.2 user_setting_event.dart
+```dart
+part of 'user_setting_bloc.dart';
+
+abstract class UserSettingEvent {}
+
+class UserNameChange extends UserSettingEvent {
+  String username;
+
+  UserNameChange(this.username);
+}
+
+class UserThemeChange extends UserSettingEvent {
+  ThemeData themeData;
+
+  UserThemeChange(this.themeData);
+}
+
+class UserBrightnessChange extends UserSettingEvent {
+  bool mode;
+
+  UserBrightnessChange(this.mode);
+}
+```
+##### 1.3.3.3 user_setting_state.dart
+```dart
+part of 'user_setting_bloc.dart';
+
+abstract class UserSettingState {}
+
+class UserSettingStateInit extends UserSettingState {}
+
+class UserSettingStateName extends UserSettingState {
+  String username;
+
+  UserSettingStateName(this.username);
+}
+
+class UserSettingStateTheme extends UserSettingStateInit {
+  ThemeData theme;
+
+  UserSettingStateTheme(this.theme);
+}
+
+class UserSettingStateBrightness extends UserSettingStateInit {
+  bool mode;
+
+  UserSettingStateBrightness(this.mode);
+}
+
+```
+##### 1.3.3.4 其他地方使用
+main.dart
+if (state is UserSettingStateTheme) {
+    theme = state.theme;
+}
+通过判断状态，获取状态中的数据，更新界面。
+MultiBlocProvider是用来管理多个bloc对象的，这里只管理一个bloc对象。
+BlocBuilder是用来监听bloc对象的状态变化的，一定要要是MultiBlocProvider或者BlocProvider的子级，否则无法监听状态变化。
+```dart
+return MultiBlocProvider(
+  providers: [
+    BlocProvider(
+      create: (BuildContext context) => getIt<UserSetting>(),
+    ),
+  ],
+  child: BlocBuilder<UserSetting, UserSettingState>(
+      builder: (context, state) {
+        ThemeData theme = getIt<UserSetting>()
+            .getHcTheme()
+            .themeData;
+        if (state is UserSettingStateTheme) {
+          theme = state.theme;
+        }
+        return MaterialApp(
+          title: 'WebRTC Flutter',
+          theme: theme,
+          home: Builder(
+            builder: (context) {
+              return LoginPage();
+            },
+          ),
+        );
+      }
+  ),
+);
+```
+其他页面，通过获取到bloc对象(通过getIt可以更方便获取),调用对应方法更新状态。
+```dart
+getIt<UserSetting>().setHcTheme(ThemeData(colorSchemeSeed: Colors.red, brightness: Brightness.light));
 ```
