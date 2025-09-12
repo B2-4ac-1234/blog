@@ -9,11 +9,107 @@ tag:
 footer: Flutter的性能优化就像减肥，你以为少吃点（减少Widget重建）就能瘦，结果发现还得去健身房（优化布局）。
 ---
 
+## 写法
+
+### 1 flutter中layout的分类
+flutter中的layout widget有很多，他们大概可以分为三类，分别是只包含一个child的layout widget，可以包含多个child的layout widget和可滑动的Sliver widgets。
+
+这三种layout也有很多种具体的实现，对于Single-child layout widgets来说，包含下面这些widgets：
+
+Align — 用来对其包含在其中的组件进行对其操作。
+
+AspectRatio — 对其中的组件进行比例缩放。
+
+Baseline — 通过使用子组件的baseline来进行定位。
+
+Center — 自组件位于中间。
+
+ConstrainedBox — 类似于IOS中的constrain,表示子组件的限制条件。
+
+Container — 一个常用的widget，可以用来包含多个其他的widget。
+
+CustomSingleChildLayout — 将其单个子项的布局推迟。
+
+Expanded — 将Row, Column 或者 Flex的child进行扩展。
+
+FittedBox — 根据fit来缩放和定位其child。
+
+FractionallySizedBox — 将child按照总可用空间进行调整。
+
+IntrinsicHeight — 一个将其child调整为child固有高度的小部件。
+
+IntrinsicWidth — 一个将其child调整为child固有宽度的小部件。
+
+LimitedBox — 限制一个box的size。
+
+Offstage — 将child放入render tree中，但是却并不触发任何重绘。
+
+OverflowBox — 允许child覆盖父组件的限制。
+
+Padding — 为child提供padding。
+
+SizedBox — 给定size的box。
+
+SizedOverflowBox — 可以覆盖父组件限制的box。
+
+Transform — 子组件可以变换。
+
+以上是包含单个child的layout组件，下面是可以包含多个child的layout组件：
+
+Column — 表示一列child。
+
+CustomMultiChildLayout — 使用代理来定位和缩放子组件。
+
+Flow — 流式布局。
+
+GridView — 网格布局。
+
+IndexedStack — 从一系列的child中展示其中的一个child。
+
+LayoutBuilder — 可以依赖父组件大小的widget tree。
+
+ListBody — 根据给定的axis来布局child。
+
+ListView — 可滚动的列表。
+
+Row — 表示一行child。
+
+Stack — 栈式布局的组件。
+
+Table — 表格形式的组件。
+
+Wrap — 可以对子child进行动态调整的widget。
+
+可滑动的Sliver widgets有下面几种：
+
+CupertinoSliverNavigationBar — 是一种IOS风格的导航bar。
+
+CustomScrollView — 可以自定义scroll效果的ScrollView。
+
+SliverAppBar — material风格的app bar,其中包含了CustomScrollView。
+
+SliverChildBuilderDelegate — 使用builder callback为slivers提供child的委托。
+
+SliverChildListDelegate — 使用list来为livers提供child的委托。
+
+SliverFixedExtentList — 固定axis extent的sliver。
+
+SliverGrid — child是二维分布的sliver。
+
+SliverList — child是线性布局的sliver。
+
+SliverPadding — 提供padding的sliver。
+
+SliverPersistentHeader — 可变size的sliver。
+
+SliverToBoxAdapter — 包含单个box widget的Sliver。
+
+
 ## 1 优化布局
 
 ### 1.1 减少 Widget 重建
 
-能加const就加const。用**ValueNotifier,ValueListenableBuilder** 代替 **SetState()**能大幅减低重新渲染区域，从而大幅降低界面重绘。
+能加const就加const。用**ValueNotifier,ValueListenableBuilder(valueListenable: valueNotify, builder: (context, text, child) { return Space(); }),** 代替 **SetState()**能大幅减低重新渲染区域，从而大幅降低界面重绘。
 
 ### 1.2 减少不必要的重建
 
@@ -22,7 +118,7 @@ footer: Flutter的性能优化就像减肥，你以为少吃点（减少Widget�
 - 能用 const 尽量用：如果您的 Widget 是不可变的，可以使用 const 关键字将其标记为常量。这样，Flutter 就可以在编译时进行优化，避免不必要地重建。
 - 使用 Key：如果您的 Widget 是可变的，可以使用 Key 来标记它。Key 是一个唯一标识符，可以用于告诉 Flutter 哪些 Widget 需要更新。
 - 使用 StatefulWidget：如果您的 Widget 是可变的，可以使用 StatefulWidget 来标记它。StatefulWidget 允许您在 Widget 的状态发生变化时更新它。
-- 在只需要变更较少内容尤其文本一类时，使用 ValueNotifier 和 valueListenable 代替 setState() 可大幅减少 StatefulWidget 界面重绘
+- 在只需要变更较少内容尤其文本一类时，使用 ValueNotifier 和 ValueListenableBuilder 代替 setState() 可大幅减少 StatefulWidget 界面重绘
 
 ### 1.3 减少不必要的布局
 
